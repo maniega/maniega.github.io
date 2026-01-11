@@ -1,41 +1,193 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#1a73e8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maniega | Ingeniería y Tecnología</title>
+    <title>Maniega</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --primary: #202124; --accent: #1a73e8; --text: #3c4043; --light: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--text); background-color: white; line-height: 1.6; }
-        header { padding: 4rem 2rem; text-align: center; background-color: var(--light); border-bottom: 1px solid #dadce0; }
-        h1 { margin: 0; font-size: 2.5rem; color: var(--primary); letter-spacing: -0.5px; }
-        .subtitle { font-size: 1.2rem; color: var(--accent); font-weight: 500; margin-top: 0.5rem; }
-        main { max-width: 800px; margin: 3rem auto; padding: 0 2rem; }
-        .card { border: 1px solid #dadce0; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
-        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #70757a; border-top: 1px solid #dadce0; }
-        .dot { height: 10px; width: 10px; background-color: #34a853; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        :root {
+            --bg-color: #050505;
+            --accent-color: #ffffff;
+            --text-dim: #888888;
+            --font-main: 'Syne', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            font-family: var(--font-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Fondo Animado Atmosférico */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+            z-index: -1;
+        }
+
+        .bg-nebula {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 50%);
+            animation: move 20s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(10%, 10%); }
+        }
+
+        /* Contenedor Principal */
+        main {
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Estilo del Nombre */
+        h1 {
+            font-weight: 800;
+            font-size: clamp(3rem, 15vw, 8rem);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            background: linear-gradient(180deg, #fff 0%, #444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Enlaces de Redes Sociales */
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            animation: fadeIn 3s ease;
+        }
+
+        .links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .links a span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .links a:hover span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Custom Cursor (Opcional, muy tendencia 2026) */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.1s;
+            mix-blend-mode: difference;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>maniega.es</h1>
-        <div class="subtitle">Sistemas & Infraestructura Segura</div>
-    </header>
+
+    <div id="cursor"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-nebula"></div>
+
     <main>
-        <div class="card">
-            <h2><span class="dot"></span> Estado del Dominio</h2>
-            <p>Este dominio está protegido con los estándares más altos de seguridad de correo (DMARC p=reject, MTA-STS, TLS-RPT).</p>
-        </div>
-        <p>Bienvenido. Actualmente estamos optimizando nuestra infraestructura digital para ofrecer servicios de máxima fiabilidad y seguridad.</p>
+        <h1 id="title">Maniega</h1>
+        
+        <nav class="links">
+            <a href="https://instagram.com/tu-usuario" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com/tu-usuario" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>Twitter</span>
+            </a>
+            <a href="mailto:tu@email.com">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </nav>
     </main>
-    <footer>
-        &copy; 2026 Maniega. Todos los derechos reservados.
-    </footer>
+
+    <script>
+        // Efecto de cursor que sigue al ratón
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Efecto de inclinación leve en el título al mover el ratón
+        const title = document.getElementById('title');
+        document.addEventListener('mousemove', e => {
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            title.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    </script>
 </body>
 </html>
