@@ -92,9 +92,10 @@
         }
 
         h1 {
-            font-size: 4rem;
+           /* Clamp: mínimo 2.5rem, ideal 8vw, máximo 4rem */
+            font-size: clamp(2.5rem, 8vw, 4rem); 
             font-weight: 800;
-            letter-spacing: -4px;
+            letter-spacing: -0.05em; /* Cambiado a em para que sea proporcional al tamaño */
             margin-bottom: 0.2rem;
             background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.1) 100%);
             -webkit-background-clip: text;
@@ -102,8 +103,9 @@
             user-select: none;
             opacity: 0;
             animation: revealText 0.8s ease-out 0.4s forwards;
+            line-height: 1.1; /* Evita que se corte por arriba/abajo */
         }
-
+        
         p {
             color: var(--text-secondary);
             font-weight: 300;
