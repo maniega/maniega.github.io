@@ -148,6 +148,24 @@
         }
 
         .btn i { width: 22px; height: 22px; }
+        /* Ajustes específicos para móviles */
+        @media (max-width: 480px) {
+           .card {
+               padding: 3rem 1.5rem; /* Menos relleno lateral para ganar espacio */
+               width: 85%;
+               border-radius: 32px; /* Bordes un poco más cerrados en móvil */
+           }
+    
+           .social-links {
+               gap: 0.8rem; /* Iconos un poco más juntos */
+           }
+
+           .btn {
+               width: 50px;
+               height: 50px;
+           }
+       }
+    
     </style>
 </head>
 <body>
